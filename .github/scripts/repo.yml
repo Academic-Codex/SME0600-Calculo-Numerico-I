@@ -1,0 +1,16 @@
+TITLE_1: SME0600
+TITLE_2: Cálculo Numérico I
+SUBTITLE_1: Disciplina de graduação
+SUBTITLE_2: Material de aula, notebooks e referências.
+
+ABOUT: |
+  Este site organiza as aulas, exercícios e material suplementar da disciplina.
+
+REFERENCIAS: |
+  <ul>
+    <li>Livro AA …</li>
+    <li>Artigo BB …</li>
+  </ul>
+
+GITHUB_LINK: https://github.com/Academic-Codex/SME0600-Calculo-Numerico-I
+HERO_FILE: calculo-numerico-i.png
