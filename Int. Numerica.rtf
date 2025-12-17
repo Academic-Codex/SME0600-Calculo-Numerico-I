@@ -1,0 +1,67 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2820
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 import numpy as np\
+import matplotlib.pyplot as plt\
+from scipy.integrate import solve_bvp\
+\
+# Par\'e2metros do problema\
+c = 1       # Coeficiente cin\'e9tico\
+m = 1       # \'cdndice topol\'f3gico\
+r_tilde = -1 # Par\'e2metro linear\
+u = 1 / 4    # Coeficiente c\'fabico\
+\
+# Definir a equa\'e7\'e3o diferencial\
+def ode_system(r, phi):\
+    """\
+    Representa a equa\'e7\'e3o diferencial:\
+    - (c/r) d/dr [r dphi/dr] + c m^2 (phi/r^2) + r_tilde * phi + 4u * phi^3 = 0\
+    """\
+    dphi_dr = phi[1]\
+    d2phi_dr2 = (\
+        -(1 / r) * phi[1]\
+        + (m**2 / r**2) * phi[0]\
+        + r_tilde * phi[0]\
+        + 4 * u * phi[0]**3\
+    ) / c\
+    return np.vstack((dphi_dr, d2phi_dr2))\
+\
+# Condi\'e7\'f5es de contorno\
+def boundary_conditions(phi0, phi_inf):\
+    """\
+    Condi\'e7\'f5es de contorno:\
+    - phi(0) = 0 (regularidade na origem)\
+    - phi(r -> inf) = phi_0\
+    """\
+    phi_0 = np.sqrt(-r_tilde / (2 * u))  # Valor uniforme de phi_0\
+    return np.array([phi0[0], phi_inf[0] - phi_0])\
+\
+# Configurar o intervalo e a estimativa inicial\
+r_sol = np.linspace(1e-3, 6, 500)  # Intervalo [0, 6]\
+phi_guess = np.zeros((2, r_sol.size))  # Estimativa inicial para phi(r)\
+phi_guess[0] = np.sqrt(-r_tilde / (2 * u))  # Chute inicial para phi_0\
+\
+# Resolver a equa\'e7\'e3o diferencial\
+solution = solve_bvp(ode_system, boundary_conditions, r_sol, phi_guess)\
+\
+# Recuperar os resultados\
+phi_sol = solution.y[0]  # Valores de phi(r)\
+r_sol = solution.x       # Valores de r correspondentes\
+\
+# Plotar o resultado\
+phi_0 = np.sqrt(-r_tilde / (2 * u))  # Valor constante de phi_0\
+plt.figure(figsize=(8, 5))\
+plt.plot(r_sol, phi_sol, label='Solu\'e7\'e3o Num\'e9rica ($\\phi(r)$)', linewidth=2, color='orange')\
+plt.axhline(y=phi_0, color='r', linestyle='--', label=r'$\\phi_0 = \\sqrt\{-\\tilde\{r\}/(2u)\} \\approx 1.41$')\
+plt.xlim(0, 6)  # Limitar r at\'e9 6\
+plt.ylim(0, 2)  # Limitar phi at\'e9 2\
+plt.xlabel(r'$r$', fontsize=14)\
+plt.ylabel(r'$\\phi(r)$', fontsize=14)\
+plt.title('Solu\'e7\'e3o Num\'e9rica $\\phi(r)$ com $r_\{max\} = 6$', fontsize=16)\
+plt.grid(True)\
+plt.legend(fontsize=12)\
+plt.show()}
