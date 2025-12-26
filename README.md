@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://academic-codex.github.io/SME0600-Calculo-Numerico">
-    <img src=".github/readme/hero.svg?v=2025-12-26T03:48:14.896703Z" width="100%" alt="Access the course website" />
+    <img src=".github/readme/hero.svg?v=2025-12-26T03:49:30.777265Z" width="100%" alt="Access the course website" />
   </a>
 </p>
 
