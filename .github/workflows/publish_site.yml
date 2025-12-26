@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - ".github/workflows/publish_site"
+      - ".github/workflows/publish_site.yml"
       - ".github/placeholders/site.yml"
   workflow_dispatch:
   repository_dispatch:
