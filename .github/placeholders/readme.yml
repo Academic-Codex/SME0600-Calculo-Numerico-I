@@ -2,7 +2,7 @@ REPO_TAGLINE: Numerical methods • approximation • stability & error
 ASSETS_DIR: .github/readme
 CTA_TEXT: Access the full course website
 THEME: peace
-SITE_URL: https://academic-codex.github.io/SME0600-Calculo-Numerico
+SITE_URL: https://academic-codex.github.io/SME0600-Calculo-Numerico-I
 
 BG_1: "#0B1220"
 BG_2: "#0F2A3D"
