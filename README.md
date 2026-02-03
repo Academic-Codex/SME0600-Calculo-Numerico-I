@@ -3,8 +3,8 @@
 </p> -->
 
 <p align="center">
-  <a href="https://Academic-Codex.github.io/SME0600-Calculo-Numerico-I">
-    <img src=".github/readme/hero.svg?v=2026-01-08T01:41:11.228913Z" width="100%" alt="Access the course website" />
+  <a href="https://academic-codex.github.io/SME0600-Calculo-Numerico-I?utm_source=SME0600-Calculo-Numerico-I&utm_medium=readme">
+    <img src=".github/readme/hero.svg?v=2026-02-03T01:41:29.199652Z" width="100%" alt="Access the course website" />
   </a>
 </p>
 
